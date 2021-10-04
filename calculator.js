@@ -29,12 +29,16 @@ const add = document.getElementById("add");
 [zero, one, two, three, four, five, six, seven, eight, nine].forEach(
   (number) => {
     number.addEventListener("click", (n) => {
+      // if no numbers, let number become firstNumber
       console.log(`${number.innerText} was pressed`);
+
       if (screenLow.innerText == 0) {
         screenLow.innerText = number.innerText;
       } else {
         screenLow.innerText += number.innerText;
       }
+
+      // if contains operand, let numbers become secondNumber
     });
   }
 );
@@ -48,6 +52,9 @@ const add = document.getElementById("add");
     } else {
       screenLow.innerText += operand.innerText;
     }
+    // If firstNumber exists, add operand
+
+    // If secondNumber exists, no operand
   });
 });
 
@@ -69,29 +76,80 @@ decimal.addEventListener("click", (d) => {
   }
 });
 
-let result = 0;
-let firstNumber = 0;
-let secondNumber = 0;
-
 evaluate.addEventListener("click", (e) => {
   console.log("Equals was pressed");
-  // equation =
-
-  // switch () {
-  //   case "+":
-  //     result = parseFloat(firstNumber) + parseFloat(secondNumber);s
-  //     break;
-  //   case "-":
-  //     result = parseFloat(firstNumber) - parseFloat(secondNumber);
-  //     break;
-  //   case "×":
-  //     result = parseFloat(firstNumber) * parseFloat(secondNumber);
-  //     break;
-  //   case "÷":
-  //     result = parseFloat(firstNumber) / parseFloat(secondNumber);
-  //     break;
-  // }
-  screenHigh.innerText = screenLow.innerText;
-  let equation = parseFloat(screenHigh.innerText);
+  let equation = screenLow.innerText;
   console.log(equation);
+  result(equation);
 });
+
+const result = (equation) => {
+  let equationArray = equation.split("");
+  console.log(equationArray);
+  equationArray.find(locateOperand);
+  console.log(resultOperand);
+  doTheMaths(equationArray);
+};
+
+const locateOperand = (resultArray) => {
+  switch (resultArray) {
+    case "+":
+      resultOperand = "+";
+      break;
+    case "-":
+      resultOperand = "-";
+      break;
+    case "x":
+      resultOperand = "*";
+      break;
+    case "÷":
+      resultOperand = "/";
+      break;
+  }
+};
+
+const doTheMaths = (equationArray) => {
+  let tempString = equationArray.join("");
+  console.log(tempString);
+
+  if (resultOperand == "+") {
+    resultArray = tempString.split("+");
+  } else if (resultOperand == "*") {
+    resultArray = tempString.split("x");
+  } else if (resultOperand == "-") {
+    resultArray = tempString.split("-");
+  } else {
+    resultArray = tempString.split("÷");
+  }
+
+  console.log(resultArray);
+
+  let firstNumber = resultArray[0];
+  console.log(firstNumber);
+
+  let secondNumber = resultArray[1];
+  console.log(secondNumber);
+
+  console.log(firstNumber, resultOperand, secondNumber);
+  reallyDoTheMaths(firstNumber, resultOperand, secondNumber);
+};
+
+const reallyDoTheMaths = (firstNumber, resultOperand, secondNumber) => {
+  switch (resultOperand) {
+    case "+":
+      answer = firstNumber + secondNumber;
+      break;
+    case "-":
+      answer = firstNumber - secondNumber;
+      break;
+    case "*":
+      answer = firstNumber * secondNumber;
+      break;
+    case "/":
+      answer = firstNumber / secondNumber;
+      break;
+  }
+
+  console.log(answer);
+  screenHigh.innerText = answer;
+};
