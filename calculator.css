@@ -1,0 +1,134 @@
+.container {
+  background-color: #d3d3d3;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+  height: 600px;
+  width: 450px;
+  padding: 15px;
+  border: 1px solid black;
+}
+
+.calculator {
+  display: flex;
+  background-color: white;
+  border: 1px solid black;
+  height: 530px;
+  width: 440px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 130px 60px 1fr 1fr 1fr 1fr 1fr;
+  grid-template-areas: "screenHigh screenHigh screenHigh screenHigh" "screenLow screenLow screenLow screenLow" "clearop . . divop" "sevennum eightnum ninenum multiplyop" "fournum fivenum sixnum subtractop" "onenum twonum threenum addop" "zeronum . decimalnum equalsop";
+}
+
+.screenHigh {
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  padding-right: 20px;
+  grid-area: screenHigh;
+  font-size: 50px;
+  text-align: right;
+  background-color: #f8f8f8;
+}
+
+.screenLow {
+  display: flex;
+  justify-content: right;
+  padding-right: 20px;
+  font-size: 30px;
+  color: #dcdcdc;
+  grid-area: screenLow;
+  background-color: #f8f8f8;
+}
+
+.number {
+  background-color: white;
+  color: black;
+  border: none;
+  font-weight: bolder;
+}
+.number__zero {
+  grid-area: zeronum;
+}
+.number__one {
+  grid-area: onenum;
+}
+.number__two {
+  grid-area: twonum;
+}
+.number__three {
+  grid-area: threenum;
+}
+.number__four {
+  grid-area: fournum;
+}
+.number__five {
+  grid-area: fivenum;
+}
+.number__six {
+  grid-area: sixnum;
+}
+.number__seven {
+  grid-area: sevennum;
+}
+.number__eight {
+  grid-area: eightnum;
+}
+.number__nine {
+  grid-area: ninenum;
+}
+.number__decimal {
+  grid-area: decimalnum;
+}
+
+.divide {
+  border: 1px solid orchid;
+  border-radius: 10px;
+  background-color: orchid;
+  color: white;
+  font-weight: bolder;
+  grid-area: divop;
+}
+
+.multiply {
+  border: 1px solid red;
+  border-radius: 10px;
+  background-color: red;
+  color: white;
+  font-weight: bold;
+  grid-area: multiplyop;
+}
+
+.subtract {
+  border: 1px solid blue;
+  border-radius: 10px;
+  background-color: blue;
+  color: white;
+  font-weight: bolder;
+  grid-area: subtractop;
+}
+
+.add {
+  border: 1px solid orange;
+  border-radius: 10px;
+  background-color: orange;
+  color: white;
+  font-weight: bolder;
+  grid-area: addop;
+}
+
+.evaluate {
+  border: 1px solid green;
+  border-radius: 10px;
+  background-color: green;
+  color: white;
+  font-weight: bolder;
+  grid-area: equalsop;
+}
+
+.clear {
+  grid-area: clearop;
+  background-color: white;
+  color: black;
+  border: none;
+  font-weight: bolder;
+}

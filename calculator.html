@@ -4,41 +4,36 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="calculator.css" />
     <title>Calculator - Natalie Lovibond Hodgson</title>
   </head>
   <body>
     <div class="container">
       <div class="calculator">
-        <div class="calculator__screen" id="screen">
-          <div class="calculator__screen-high" id="screenHigh"></div>
-          <div class="calculator__screen-low" id="screenLow"></div>
-        </div>
+        <div class="screenHigh" id="screenHigh"></div>
+        <div class="screenLow" id="screenLow"></div>
 
-        <div class="calculator__buttons">
-          <button class="clear" id="clear">C</button>
-          <button class="evaluate" id="evaluate">=</button>
+        <button class="clear" id="clear">C</button>
+        <button class="divide" id="divide">÷</button>
 
-          <div class="container__buttons-op">
-            <button class="operand" id="divide">÷</button>
-            <button class="operand" id="multiply">*</button>
-            <button class="operand" id="subtract">-</button>
-            <button class="operand" id="add">+</button>
-          </div>
+        <button class="number number__seven" id="seven">7</button>
+        <button class="number number__eight" id="eight">8</button>
+        <button class="number number__nine" id="nine">9</button>
+        <button class="multiply" id="multiply">x</button>
 
-          <div class="container__buttons-num">
-            <button id="decimal">.</button>
-            <button class="number" id="zero">0</button>
-            <button class="number" id="one">1</button>
-            <button class="number" id="two">2</button>
-            <button class="number" id="three">3</button>
-            <button class="number" id="four">4</button>
-            <button class="number" id="five">5</button>
-            <button class="number" id="six">6</button>
-            <button class="number" id="seven">7</button>
-            <button class="number" id="eight">8</button>
-            <button class="number" id="nine">9</button>
-          </div>
-        </div>
+        <button class="number number__four" id="four">4</button>
+        <button class="number number__five" id="five">5</button>
+        <button class="number number__six" id="six">6</button>
+        <button class="subtract" id="subtract">-</button>
+
+        <button class="number number__one" id="one">1</button>
+        <button class="number number__two" id="two">2</button>
+        <button class="number number__three" id="three">3</button>
+        <button class="add" id="add">+</button>
+
+        <button class="number number__zero" id="zero">0</button>
+        <button class="number number__decimal" id="decimal">.</button>
+        <button class="evaluate" id="evaluate">=</button>
       </div>
     </div>
     <script src="calculator.js"></script>
