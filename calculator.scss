@@ -1,21 +1,29 @@
 .container {
+  display: flex;
+  // flex-wrap: s;
+  align-items: center;
+  justify-content: space-around;
   background-color: #d3d3d3;
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
-  height: 600px;
-  width: 450px;
+  height: 520px;
+  width: 280px;
   padding: 15px;
-  border: 1px solid black;
+  border: 1px solid transparent;
+  border-radius: 7px;
 }
 
 .calculator {
   display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: white;
-  border: 1px solid black;
+  border: 1px solid transparent;
+  border-radius: 7px;
   height: 530px;
-  width: 440px;
+  width: 300px;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 50px;
   grid-template-rows: 130px 60px 1fr 1fr 1fr 1fr 1fr;
   grid-template-areas:
     "screenHigh screenHigh screenHigh screenHigh"
@@ -35,7 +43,7 @@
   grid-area: screenHigh;
   font-size: 50px;
   text-align: right;
-  background-color: #f8f8f8;
+  // background-color: #d3d3d3;
 }
 
 .screenLow {
@@ -45,7 +53,7 @@
   font-size: 30px;
   color: #dcdcdc;
   grid-area: screenLow;
-  background-color: #f8f8f8;
+  // background-color: #d3d3d3;
 }
 
 .number {
@@ -89,47 +97,67 @@
 }
 
 .divide {
-  border: 1px solid orchid;
-  border-radius: 10px;
-  background-color: orchid;
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  height: 40px;
+  width: 40px;
+  border: 1px solid #006ba6;
+  border-radius: 6px;
   color: white;
-  font-weight: bolder;
+  font-size: 25px;
+  background-color: #006ba6;
   grid-area: divop;
 }
 
 .multiply {
-  border: 1px solid red;
-  border-radius: 10px;
-  background-color: red;
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  height: 40px;
+  width: 40px;
+  border: 1px solid #0496ff;
+  border-radius: 6px;
   color: white;
-  font-weight: bold;
+  font-size: 25px;
+  background-color: #0496ff;
   grid-area: multiplyop;
 }
 
 .subtract {
-  border: 1px solid blue;
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  height: 40px;
+  width: 40px;
+  border: 1px solid #ffbc42;
   border-radius: 10px;
-  background-color: blue;
   color: white;
-  font-weight: bolder;
+  font-size: 25px;
+  background-color: #ffbc42;
   grid-area: subtractop;
 }
 
 .add {
-  border: 1px solid orange;
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  height: 40px;
+  width: 40px;
+  border: 1px solid #d81159;
   border-radius: 10px;
-  background-color: orange;
   color: white;
-  font-weight: bolder;
+  font-size: 25px;
+  background-color: #d81159;
   grid-area: addop;
 }
 
 .evaluate {
-  border: 1px solid green;
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  height: 40px;
+  width: 40px;
+  border: 1px solid #8f2d56;
   border-radius: 10px;
-  background-color: green;
   color: white;
-  font-weight: bolder;
+  font-size: 25px;
+  background-color: #8f2d56;
   grid-area: equalsop;
 }
 

@@ -25,40 +25,38 @@ const multiply = document.getElementById("multiply");
 const subtract = document.getElementById("subtract");
 const add = document.getElementById("add");
 
-// Event Listener NUMBERS
+// Event Listener Numbers
 [zero, one, two, three, four, five, six, seven, eight, nine].forEach(
   (number) => {
     number.addEventListener("click", (n) => {
-      // if no numbers, let number become firstNumber
-      console.log(`${number.innerText} was pressed`);
-
-      if (screenLow.innerText == 0) {
+      if (screenLow.innerText == null) {
         screenLow.innerText = number.innerText;
       } else {
         screenLow.innerText += number.innerText;
       }
-
-      // if contains operand, let numbers become secondNumber
     });
   }
 );
 
-// Event Listener OPERANDS
+// Event Listener Operators
 [divide, multiply, subtract, add].forEach((operand) => {
   operand.addEventListener("click", (o) => {
     console.log(`${operand.innerText} was pressed`);
-    if (screenLow.innerText == 0) {
+    if (
+      screenLow.innerText == null ||
+      screenLow.innerText == 0 ||
+      screenLow.innerText == "" ||
+      screenLow.innerText == "."
+    ) {
+      alert("There needs to be a number before you press an operator! :(");
       return;
     } else {
       screenLow.innerText += operand.innerText;
     }
-    // If firstNumber exists, add operand
-
-    // If secondNumber exists, no operand
   });
 });
 
-// Event Listeners MISC
+// Event Listeners Other
 allClear.addEventListener("click", (ac) => {
   console.log("AC was pressed");
   if (screenLow.innerText !== "" || screenHigh.innerText !== "") {
@@ -68,7 +66,6 @@ allClear.addEventListener("click", (ac) => {
 });
 
 decimal.addEventListener("click", (d) => {
-  console.log(`${decimal.innerText} was pressed`);
   if (screenLow.innerText.includes(".")) {
     return;
   } else {
@@ -78,16 +75,21 @@ decimal.addEventListener("click", (d) => {
 
 evaluate.addEventListener("click", (e) => {
   console.log("Equals was pressed");
-  let equation = screenLow.innerText;
-  console.log(equation);
-  result(equation);
+  if (
+    screenLow.innerText == null ||
+    screenLow.innerText == 0 ||
+    screenLow.innerText == "."
+  ) {
+    alert("I can't compute this! There are no numbers! :(");
+  } else {
+    let equation = screenLow.innerText;
+    result(equation);
+  }
 });
 
 const result = (equation) => {
   let equationArray = equation.split("");
-  console.log(equationArray);
   equationArray.find(locateOperand);
-  console.log(resultOperand);
   doTheMaths(equationArray);
 };
 
@@ -110,7 +112,6 @@ const locateOperand = (resultArray) => {
 
 const doTheMaths = (equationArray) => {
   let tempString = equationArray.join("");
-  console.log(tempString);
 
   if (resultOperand == "+") {
     resultArray = tempString.split("+");
@@ -118,26 +119,26 @@ const doTheMaths = (equationArray) => {
     resultArray = tempString.split("x");
   } else if (resultOperand == "-") {
     resultArray = tempString.split("-");
-  } else {
+  } else if (resultOperand == "/") {
     resultArray = tempString.split("÷");
+  } else {
+    alert("I can't find an operator!");
   }
 
-  console.log(resultArray);
-
   let firstNumber = resultArray[0];
-  console.log(firstNumber);
 
-  let secondNumber = resultArray[1];
-  console.log(secondNumber);
-
-  console.log(firstNumber, resultOperand, secondNumber);
-  reallyDoTheMaths(firstNumber, resultOperand, secondNumber);
+  if (resultArray[1] == null || resultArray[1] == 0 || resultArray[1] == "") {
+    alert("Please enter another number :)");
+  } else {
+    let secondNumber = resultArray[1];
+    reallyDoTheMaths(firstNumber, resultOperand, secondNumber);
+  }
 };
 
 const reallyDoTheMaths = (firstNumber, resultOperand, secondNumber) => {
   switch (resultOperand) {
     case "+":
-      answer = firstNumber + secondNumber;
+      answer = parseFloat(firstNumber) + parseFloat(secondNumber);
       break;
     case "-":
       answer = firstNumber - secondNumber;
@@ -149,7 +150,5 @@ const reallyDoTheMaths = (firstNumber, resultOperand, secondNumber) => {
       answer = firstNumber / secondNumber;
       break;
   }
-
-  console.log(answer);
   screenHigh.innerText = answer;
 };
