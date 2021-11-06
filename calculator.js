@@ -81,6 +81,13 @@ evaluate.addEventListener("click", (e) => {
     screenLow.innerText == "."
   ) {
     alert("I can't compute this! There are no numbers! :(");
+  } else if (
+    !screenLow.innerText.includes("+") &&
+    !screenLow.innerText.includes("-") &&
+    !screenLow.innerText.includes("x") &&
+    !screenLow.innerText.includes("÷")
+  ) {
+    alert("Add an operator to your equation!");
   } else {
     let equation = screenLow.innerText;
     result(equation);
